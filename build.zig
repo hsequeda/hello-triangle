@@ -31,6 +31,10 @@ pub fn build(b: *std.Build) void {
     });
     exe.root_module.addImport("mach-glfw", glfw_dep.module("mach-glfw"));
 
+    exe.root_module.addImport("gl", b.createModule(.{
+        .root_source_file = .{ .path = "libs/gl41.zig" },
+    }));
+
     // This declares intent for the executable to be installed into the
     // standard location when the user invokes the "install" step (the default
     // step when running `zig build`).
